@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">川澤</string>
+    <string name="settings">設定</string>
+    <string name="slide_to_open">向左滑動</string>
+    <string name="ip_dns_setting">Change IP/DNS</string>
+
+</resources>

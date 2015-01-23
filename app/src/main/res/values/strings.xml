@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">OpenTheDoor</string>
+    <string name="settings">Settings</string>
+    <string name="slide_to_open">Slide left to open</string>
+    <string name="ip_dns_setting">Change IP/DNS</string>
+
+</resources>
