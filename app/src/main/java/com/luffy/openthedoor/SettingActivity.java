@@ -38,7 +38,9 @@ public class SettingActivity extends Activity {
      */
     public static class PlaceholderFragment extends Fragment {
 
-        EditText mIPInput;
+        private EditText mIPInput;
+        private EditText mUsername;
+        private EditText mPassword;
         WeakReference<SettingActivity> mSettingActivity;
 
         public PlaceholderFragment() {
@@ -57,6 +59,10 @@ public class SettingActivity extends Activity {
             View rootView = inflater.inflate(R.layout.fragment_setting, container, false);
             mIPInput = (EditText) rootView.findViewById(R.id.ip_dns_input);
             mIPInput.setText(mSettingActivity.get().mPreference.getLocation());
+            mUsername = (EditText) rootView.findViewById(R.id.username_input);
+            mUsername.setText(mSettingActivity.get().mPreference.getUsername());
+            mPassword = (EditText) rootView.findViewById(R.id.password_input);
+            mPassword.setText(mSettingActivity.get().mPreference.getPassword());
             return rootView;
         }
 
@@ -66,6 +72,9 @@ public class SettingActivity extends Activity {
             SettingActivity activity = mSettingActivity.get();
             if (activity != null) {
                 activity.mPreference.setLocation(mIPInput.getText().toString());
+                activity.mPreference.setUsername(mUsername.getText().toString());
+                activity.mPreference.setPassword(mPassword.getText().toString());
+                activity.mPreference.setPassword(mPassword.getText().toString());
             }
         }
     }

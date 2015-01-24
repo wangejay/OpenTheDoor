@@ -3,6 +3,7 @@ package com.luffy.openthedoor;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -57,12 +58,21 @@ public class MainActivity extends Activity implements OnSlideTriggerListener {
         return super.onOptionsItemSelected(item);
     }
 
+    private String createRemoteLocation() {
+        MyPreference pref = new MyPreference(this);
+        String protocol = "http://";
+        String location = pref.getLocation();
+        String userPassword = String.format("%s:%s@", pref.getUsername(), pref.getPassword());
+        return TextUtils.isEmpty(pref.getUsername()) ? protocol + location : protocol + userPassword + location;
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
-        String location = new MyPreference(this).getLocation();
+        String remoteLocation = createRemoteLocation();
+        Log.d(TAG, remoteLocation);
         mRestAdapter = new RestAdapter.Builder()
-                .setEndpoint("http://" + location).build();
+                .setEndpoint(remoteLocation).build();
 
         mYunInterface = mRestAdapter.create(YunInterface.class);
     }
